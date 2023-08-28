@@ -1,5 +1,6 @@
 from utils import rotate
 from copy import copy
+
 class ASE():
     def __init__(self, plaintext, epochs):
         self.plaintext = plaintext
