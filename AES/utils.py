@@ -145,8 +145,8 @@ def encrypt(plaintext, cipherKey, key_length=176):
 
     return "".join(ciphertext)
 
-plaintext = "0123456789abcdeffedcba9876543210"
-key = "0f1571c947d9e8590cb7add6af7f6798"
+# plaintext = "0123456789abcdeffedcba9876543210"
+# key = "0f1571c947d9e8590cb7add6af7f6798"
 
-ciphertext = encrypt(plaintext, key, key_length=16)
-print("Mã hóa:", ciphertext)
+# ciphertext = encrypt(plaintext, key, key_length=16)
+# print("Mã hóa:", ciphertext)
