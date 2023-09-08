@@ -41,7 +41,7 @@ def rotate(word, n):
 def shift_rows(state):
     for i in range(4):
         state[i*4:i*4+4] = rotate(state[i*4:i*4+4],i)
-
+    return state
 ################################# MIX COLUMNS ################################################
 def galoisMult(a, b):
     p = 0
@@ -76,12 +76,13 @@ def mixColumns(state):
         # Transfer the new values back into the state table
         for j in range(4):
             state[j * 4 + i] = column[j]
-
+    return state
 
 ################################# ADD ROUND KEY ################################################
 def add_round_key(state, round_key):
     for i in range(16):
         state[i] ^= round_key[i]
+    return state
 
 
 ################################# ENCRYPTOR ################################################
@@ -102,6 +103,16 @@ def text_to_states(plaintext, option = 'char'):
 
     return states
 
+def cvrt_hex(plaintext, option = 'int'):
+    for i in range(0, len(plaintext)):
+        state = plaintext
+        if option == 'char':
+            hex_state = [hex(ord(char))[2:].zfill(2) for char in state]
+            print(hex_state)
+        else:
+            hex_state = [int(char.encode('utf-8').hex(), 16) for char in state]
+
+    return hex_state
 
 ################################# DECRYPTOR ################################################
 
