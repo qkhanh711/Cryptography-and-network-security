@@ -1,7 +1,4 @@
-# Python3 code for the above approach
-
 # Hexadecimal to binary conversion
-
 
 def hex2bin(s):
 	mp = {'0': "0000",
