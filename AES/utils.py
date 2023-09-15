@@ -29,8 +29,8 @@ def expandKey(cipherKey, key_length):
 def substitute_bytes(state):
     result_hex = []
     for byte_hex in state:
-        byte_int = int(byte_hex, 16)
-        substituted_byte = sbox[byte_int]
+        # byte_int = int(byte_hex, 16)
+        substituted_byte = sbox[byte_hex]
         result_hex.append(format(substituted_byte, '02x'))  
     return result_hex
 
@@ -87,21 +87,31 @@ def add_round_key(state, round_key):
 
 ################################# ENCRYPTOR ################################################
 
-def text_to_states(plaintext, option = 'char'):
-    while len(plaintext) % 16 != 0:
-        plaintext += ' '  
+def text_to_states(plaintext, option = 'char', key = False):
 
-    states = []
-    for i in range(0, len(plaintext), 16):
-        state = plaintext[i:i+16]
-        if option == 'char':
-            hex_state = [hex(ord(char))[2:].zfill(2) for char in state]
-            print(hex_state)
-        else:
-            hex_state = [int(char.encode('utf-8').hex(), 16) for char in state]
-        states.append(hex_state)
+    if key:
+        for i in range(0, len(plaintext), len(plaintext)):
+            if option == 'char':
+                hex_state = [hex(ord(char))[2:].zfill(2) for char in plaintext]
+                # print(hex_state)
+            else:
+                hex_state = [int(char.encode('utf-8').hex(), 16) for char in plaintext]
+        return hex_state
+    else:
+        while len(plaintext) % 16 != 0:
+            plaintext += ' '  
 
-    return states
+        states = []
+        for i in range(0, len(plaintext), 16):
+            state = plaintext[i:i+16]
+            if option == 'char':
+                hex_state = [hex(ord(char))[2:].zfill(2) for char in state]
+                # print(hex_state)
+            else:
+                hex_state = [int(char.encode('utf-8').hex(), 16) for char in state]
+            states.append(hex_state)
+
+        return states
 
 def cvrt_hex(plaintext, option = 'int'):
     for i in range(0, len(plaintext)):

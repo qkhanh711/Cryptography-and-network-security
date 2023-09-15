@@ -1,3 +1,14 @@
+def config_value(obj):
+	if obj == sbox:
+		for i in range(len(obj)):
+			for j in range(len(obj[i])):
+				for k in range(len(obj[i][j])):
+					obj[i][j][k] -= 1
+	else:
+		for i in range(len(obj)):
+			obj[i] -= 1
+	return obj
+
 # Table of Position of 64 bits at initial level: Initial Permutation Table
 initial_perm = [58, 50, 42, 34, 26, 18, 10, 2,
 				60, 52, 44, 36, 28, 20, 12, 4,
@@ -96,3 +107,18 @@ key_comp = [14, 17, 11, 24, 1, 5,
 			30, 40, 51, 45, 33, 48,
 			44, 49, 39, 56, 34, 53,
 			46, 42, 50, 36, 29, 32]
+
+# initial_perm = config_value(initial_perm)
+# exp_d = config_value(exp_d)
+# per = config_value(per)
+# sbox = config_value(sbox)
+# final_perm = config_value(final_perm)
+# keyp = config_value(keyp)
+# key_comp = config_value(key_comp)
+# print(initial_perm)
+# print(exp_d)
+# print(per)
+# print(sbox)
+# print(final_perm)
+# print(keyp)
+# print(key_comp)

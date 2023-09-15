@@ -1,4 +1,4 @@
-# Hexadecimal to binary conversion
+from config import *
 
 def hex2bin(s):
 	mp = {'0': "0000",
@@ -21,8 +21,6 @@ def hex2bin(s):
 	for i in range(len(s)):
 		bin = bin + mp[s[i]]
 	return bin
-
-# Binary to hexadecimal conversion
 
 
 def bin2hex(s):
@@ -53,8 +51,6 @@ def bin2hex(s):
 
 	return hex
 
-# Binary to decimal conversion
-
 
 def bin2dec(binary):
 
@@ -67,8 +63,6 @@ def bin2dec(binary):
 		i += 1
 	return decimal
 
-# Decimal to binary conversion
-
 
 def dec2bin(num):
 	res = bin(num).replace("0b", "")
@@ -80,16 +74,12 @@ def dec2bin(num):
 			res = '0' + res
 	return res
 
-# Permute function to rearrange the bits
-
 
 def permute(k, arr, n):
 	permutation = ""
 	for i in range(0, n):
 		permutation = permutation + k[arr[i] - 1]
 	return permutation
-
-# shifting the bits towards left by nth shifts
 
 
 def shift_left(k, nth_shifts):
@@ -102,9 +92,6 @@ def shift_left(k, nth_shifts):
 		s = ""
 	return k
 
-# calculating xow of two strings of binary number a and b
-
-
 def xor(a, b):
 	ans = ""
 	for i in range(len(a)):
@@ -113,3 +100,28 @@ def xor(a, b):
 		else:
 			ans = ans + "1"
 	return ans
+
+def Key_chedule(key):
+	key = hex2bin(key)
+	key = permute(key, keyp, 56)
+
+	shift_table = [1, 1, 2, 2,
+				   2, 2, 2, 2,
+				   1, 2, 2, 2,
+				   2, 2, 2, 1]
+	left = key[0:28]
+	right = key[28:56]
+	rkb = []
+	rk = []
+	for i in range(0, 16):
+		left = shift_left(left, shift_table[i])
+		right = shift_left(right, shift_table[i])
+
+		combine_str = left + right
+
+		round_key = permute(combine_str, key_comp, 48)
+
+		rkb.append(round_key)
+		rk.append(bin2hex(round_key))
+	print(len(rkb), len(rk))
+	return rkb, rk
