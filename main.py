@@ -9,15 +9,9 @@ from typing import Union
 
 app = FastAPI(title="Software Engineering", description="with FastAPI and Generative models", version="1.0")
 app.mount("/static", StaticFiles(directory="static"), name="static")
-app.mount("/AES", StaticFiles(directory="model"), name="model")
-app.mount("/DES", StaticFiles(directory="model"), name="model")
-app.mount("/Caesar", StaticFiles(directory="model"), name="model")
-# app.mount("/RSA", StaticFiles(directory="model"), name="model")
-app.mount("/Vigenere", StaticFiles(directory="model"), name="model")
-app.mount("/Playfair", StaticFiles(directory="model"), name="model")
-app.mount("/HILL", StaticFiles(directory="model"), name="model")
-app.mount("/VERNAM", StaticFiles(directory="model"), name="model")
-app.mount("/One_time_pad", StaticFiles(directory="model"), name="model")
+app.mount("/templates", StaticFiles(directory="templates"), name="templates")
+app.mount("Asymmetric", StaticFiles(directory="Asymmetric"), name="Asymmetric")
+app.mount("Symmetric", StaticFiles(directory="Symmetric"), name="Symmetric")
 
 def Crytion(model, Plaintext, Key, Crytion):
     if model == "AES":
@@ -27,25 +21,25 @@ def Crytion(model, Plaintext, Key, Crytion):
         from DES import DES
         return DES(Plaintext, Key, Crytion)
     elif model == "Ceasar":
-        from Caesar import Caesar
+        from Classical.Caesar import Caesar
         return Caesar(Plaintext, Key, Crytion)
     # elif model == "RSA":
     #     from RSA import RSA
     #     return RSA(Plaintext, Key, Crytion)
     elif model == "Vigenere":
-        from Vigenere import Vigenere
+        from Classical.Vigenere import Vigenere
         return Vigenere(Plaintext, Key, Crytion)
     elif model == "Playfair":
-        from Playfair import Playfair
+        from Classical.Playfair import Playfair
         return Playfair(Plaintext, Key, Crytion)
     elif model == "HILL":
-        from HILL import HILL
+        from Classical.HILL import HILL
         return HILL(Plaintext, Key, Crytion)
     elif model == "VERNAM":
-        from VERNAM import VERNAM
+        from Classical.VERNAM import VERNAM
         return VERNAM(Plaintext, Key, Crytion)
     elif model == "One-time-pad":
-        from One_time_pad import Onetimepad
+        from Classical.One_time_pad import Onetimepad
         return Onetimepad(Plaintext, Key, Crytion)
     else:
         return "No model"
