@@ -15,10 +15,10 @@ app.mount("Symmetric", StaticFiles(directory="Symmetric"), name="Symmetric")
 
 def Crytion(model, Plaintext, Key, Crytion):
     if model == "AES":
-        from AES import AES
+        from Symmetric.AES import AES
         return AES(Plaintext, Key, Crytion)
     elif model == "DES":
-        from DES import DES
+        from Symmetric.DES import DES
         return DES(Plaintext, Key, Crytion)
     elif model == "Ceasar":
         from Classical.Caesar import Caesar
