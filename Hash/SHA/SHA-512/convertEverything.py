@@ -13,6 +13,9 @@ def bin2string(bin):
 def hex2bin(hex):
     return bin(int(hex, 16))[2:]
 
+def bin64bits(obj):
+    return hex2bin(obj).zfill(64)
+
 def bin2hex(bin):
     return hex(int(bin, 2))[2:]
 
