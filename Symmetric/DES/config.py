@@ -109,6 +109,7 @@ key_comp = [14, 17, 11, 24, 1, 5,
 			46, 42, 50, 36, 29, 32]
 
 # initial_perm = config_value(initial_perm)
+# print(initial_perm)
 # exp_d = config_value(exp_d)
 # per = config_value(per)
 # sbox = config_value(sbox)
