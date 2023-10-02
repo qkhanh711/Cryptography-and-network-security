@@ -78,7 +78,7 @@ def dec2bin(num):
 def permute(k, arr, n):
 	permutation = ""
 	for i in range(0, n):
-		permutation = permutation + k[arr[i] - 1]
+		permutation = permutation + k[arr[i]]
 	return permutation
 
 
