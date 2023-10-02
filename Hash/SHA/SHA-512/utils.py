@@ -15,8 +15,6 @@ def convert_to_hex(message):
     message = message.hex()
     return message
 
-
-
 # 3 Padding message
 def add_padding(message, N, option = 'hex'):
     L = len(convert_to_bin(message))
