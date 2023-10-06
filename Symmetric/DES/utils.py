@@ -7,8 +7,6 @@ def bin2hex(bin):
     return hex(int(bin, 2))[2:].zfill(len(bin) // 4).upper()
 
 def bin2dec(binary):
-
-	binary1 = binary
 	decimal, i, n = 0, 0, 0
 	while(binary != 0):
 		dec = binary % 10
@@ -63,6 +61,7 @@ def Key_chedule(key):
 				   2, 2, 2, 2,
 				   1, 2, 2, 2,
 				   2, 2, 2, 1]
+	print("Key", key)
 	left = key[0:28]
 	right = key[28:56]
 	rkb = []
@@ -77,5 +76,5 @@ def Key_chedule(key):
 
 		rkb.append(round_key)
 		rk.append(bin2hex(round_key))
-	print(len(rkb), len(rk))
+	# print(len(rkb), len(rk))
 	return rkb, rk
